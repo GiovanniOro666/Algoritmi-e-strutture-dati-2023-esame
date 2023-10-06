@@ -22,7 +22,7 @@ def test(n):
         costo_log_values.append(2 + math.log(z) + costo_log_values[-1] if costo_log_values else 2 + math.log(z))
     
     # Stampa l'ultimo valore di z e il massimo valore tra i due costi
-    print("Ultimo valore di z:", z)
+    print("Ultimo valore di z: {:e}".format(z))     # Potenza di 10
     print("costo_unif e costo_log:", sum(costo_unif_values), "\n", sum(costo_log_values))
     
     
