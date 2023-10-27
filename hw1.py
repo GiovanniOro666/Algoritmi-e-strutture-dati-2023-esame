@@ -46,7 +46,8 @@ def merge(arr, l, m, r):
             j += 1
         k += 1
 
-    # Aggiunge eventuali elementi rimanenti dalle sottoliste alla lista principale se una delle due è più lunga dell'altra
+    # Aggiunge eventuali elementi rimanenti dalle sottoliste 
+    # alla lista principale se una delle due è più lunga dell'altra
     
     while i < n1:
         arr[k] = left_half[i]
@@ -85,7 +86,8 @@ def merge_sort_outplace(arr):
                 j += 1
             k += 1
 
-        # Aggiunge eventuali elementi rimanenti dalle sottoliste alla lista principale se una delle due è più lunga dell'altra
+        # Aggiunge eventuali elementi rimanenti dalle sottoliste alla lista principale 
+        # se una delle due è più lunga dell'altra
 
         while i < len(left_half):
             arr[k] = left_half[i]
@@ -101,7 +103,12 @@ def merge_sort_outplace(arr):
 
 # Confronto delle prestazioni
 
-sizes = [1000, 2000, 3000, 4000, 5000, 6000, 7000, 8000, 9000, 10000, 12000, 14000, 16000, 18000, 20000, 25000, 30000, 35000, 40000, 45000, 50000, 60000, 70000, 80000, 90000, 100000, 120000, 140000, 160000, 180000, 200000, 250000, 300000, 350000, 400000, 450000, 500000, 600000, 700000, 800000, 900000, 1000000]
+sizes = [1000, 2000, 3000, 4000, 5000, 6000, 7000, 8000, 
+         9000, 10000, 12000, 14000, 16000, 18000, 20000, 
+         25000, 30000, 35000, 40000, 45000, 50000, 60000, 
+         70000, 80000, 90000, 100000, 120000, 140000, 160000, 
+         180000, 200000, 250000, 300000, 350000, 400000, 450000, 
+         500000, 600000, 700000, 800000, 900000, 1000000]
 times_inplace = []
 times_outplace = []
 
