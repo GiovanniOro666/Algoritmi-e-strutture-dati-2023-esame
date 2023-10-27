@@ -5,59 +5,36 @@ import matplotlib.pyplot as plt
 # Merge Sort in-place
 
 def merge_sort_inplace(arr, l, r):
-
-    # Divide l'array in due parti e chiama ricorsivamente per entrambe le metà.
-    
+    # Implementazione dell'algoritmo di merge sort in-place
     if l < r:
-        m = l + (r - l) // 2
-        merge_sort_inplace(arr, l, m)
-        merge_sort_inplace(arr, m + 1, r)
-        merge(arr, l, m, r)
+        m = l + (r - l) // 2  # Trova il punto medio
+        merge_sort_inplace(arr, l, m)  # Ordina la prima metà
+        merge_sort_inplace(arr, m + 1, r)  # Ordina la seconda metà
+        merge_inplace(arr, l, m, r)  # Unisce le due metà ordinate
 
-def merge(arr, l, m, r):
-    
-    # Unisce due sottoliste ordinate in-place in una lista.
-    
-    n1 = m - l + 1
-    n2 = r - m
+def merge_inplace(arr, l, m, r):
+    # Unisce due sottoliste ordinate in-place in una lista
+    n1 = m - l + 1  # Lunghezza della prima metà
+    n2 = r - m  # Lunghezza della seconda metà
 
-    left_half = [0] * n1
-    right_half = [0] * n2
+    # Inizializzazione degli indici per le due metà
+    p1, p2 = l, m + 1
 
-    # Copia i valori nelle sottoliste
-    
-    for i in range(0, n1):
-        left_half[i] = arr[l + i]
-
-    for j in range(0, n2):
-        right_half[j] = arr[m + 1 + j]
-
-    i = j = 0
-    k = l
-
-    # Unisce le sottoliste in ordine nella lista originale
-    
-    while i < n1 and j < n2:
-        if left_half[i] <= right_half[j]:
-            arr[k] = left_half[i]
-            i += 1
+    # Unisce le sottoliste direttamente nell'array originale senza l'uso di nuove liste
+    while p1 <= m and p2 <= r:
+        if arr[p1] <= arr[p2]:
+            p1 += 1
         else:
-            arr[k] = right_half[j]
-            j += 1
-        k += 1
+            # Copia l'elemento corrente della seconda metà nell'array originale
+            arr[m] = arr[p2]
+            p2 += 1
 
-    # Aggiunge eventuali elementi rimanenti dalle sottoliste 
-    # alla lista principale se una delle due è più lunga dell'altra
-    
-    while i < n1:
-        arr[k] = left_half[i]
-        i += 1
-        k += 1
+    # Sposta gli elementi rimanenti della prima metà a destra
+    for i in range(m + 1, r + 1):
+        arr[i] = arr[i - 1]
 
-    while j < n2:
-        arr[k] = right_half[j]
-        j += 1
-        k += 1
+    # Aggiorna il limite destro della prima metà
+    m += n2
 
 # Merge Sort out-of-place
 
